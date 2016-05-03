@@ -1,0 +1,56 @@
+{
+  "name": "intellicontacts",
+  "version": "1.0.0",
+  "description": "This is an application that intelligently displays your contacts in a way to encourage and maintain healthy social connections.",
+  "main": "index.js",
+  "dependencies": {
+    "babel-polyfill": "^6.5.0",
+    "history": "^1.13.1",
+    "muicss": "^0.5.3",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "react-redux": "^4.4.0",
+    "react-router": "^1.0.3",
+    "react-router-redux": "^3.0.0",
+    "redux": "^3.1.6",
+    "redux-form": "^4.2.2",
+    "redux-logger": "^2.5.2",
+    "redux-thunk": "^1.0.3",
+    "superagent": "^1.8.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.6.4",
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-stage-1": "^6.3.13",
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "ecstatic": "^1.4.0",
+    "express": "^4.13.4",
+    "uuid": "^2.0.1",
+    "webpack": "^1.12.12"
+  },
+  "scripts": {
+    "clean": "mkdir -p dist && rm -rf dist/*",
+    "indexpage": "cp index.html dist/index.html",
+    "assets": "npm run indexpage && cp -r assets/* dist",
+    "watch": "WEBPACK_ARGS=--watch npm run webpack",
+    "prewebpack": "npm run clean && npm run assets",
+    "webpack": "webpack $WEBPACK_ARGS",
+    "build": "NODE_ENV=development npm run webpack",
+    "release": "NODE_ENV=production npm run webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/px3l/intellicontacts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/px3l/intellicontacts/issues"
+  },
+  "homepage": "https://github.com/px3l/intellicontacts#readme"
+}
