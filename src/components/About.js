@@ -3,7 +3,7 @@ import React, { Component, PropTypes } from 'react'
 class AboutComponent extends Component {
   render() {
     return (
-      <div class="wrapper">
+      <div className="wrapper" onClick={this.props.onClick}>
         i am about
       </div>
     )
