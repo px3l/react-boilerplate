@@ -16,6 +16,12 @@ import * as reducers from './reducers'
 import getRoutes from './routes'
 
 /*
+  containers
+*/
+import App from './containers/App'
+import Home from './containers/Home'
+
+/*
   history/logging
 */
 const history = createHistory()
