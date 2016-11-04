@@ -35,11 +35,11 @@ injectTapEventPlugin()
 */
 ReactDOM.render(  
   <Provider store={store}>
-    <MuiThemeProvider>
+    <div>
       <Router history={history}>
         {routes}
       </Router>
-    </MuiThemeProvider>
+    </div>
   </Provider>,
   document.getElementById('mount')
 )
