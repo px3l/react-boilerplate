@@ -1,64 +1,45 @@
-import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+import { Provider } from 'react-redux'
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
-import createHistory from 'history/lib/createHashHistory'
-import { syncHistory, routeReducer } from 'react-router-redux'
-import { reducer as formReducer } from 'redux-form'
-import thunkMiddleware from 'redux-thunk'
-import createLogger from 'redux-logger'
+import { Router, hashHistory } from 'react-router'
+import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
+import thunk from 'redux-thunk'
 
-/*
-  reducers
-*/
-import * as reducers from './reducers'
+import Routes from './routes'
 
-import getRoutes from './routes'
+import Reducer from './reducers/reducer'
 
-/*
-  containers
-*/
-import App from './containers/App'
-import Home from './containers/Home'
-
-/*
-  history/logging
-*/
-const history = createHistory()
-const routerMiddleware = syncHistory(history)
-const loggerMiddleware = createLogger()
-
-/*
-  reducer
-*/
-const reducer = combineReducers({
-  ...reducers,
-  routing: routeReducer,
-  form: formReducer
-})
-
-var middlewareArray = [
-  thunkMiddleware,
-  routerMiddleware
-]
-
-if(process.env.NODE_ENV==='development'){
-  middlewareArray.push(loggerMiddleware)
-}
-
-/*
-  store
-*/
 const finalCreateStore = compose(
-  applyMiddleware.apply(null, middlewareArray)
+  applyMiddleware(
+    thunk,
+    routerMiddleware(hashHistory)
+  ),
+  window.devToolsExtension ? window.devToolsExtension() : f => f
 )(createStore)
 
+const reducer = combineReducers({
+  reducer: Reducer,
+  routing: routerReducer
+})
+
 const store = finalCreateStore(reducer)
+const history = syncHistoryWithStore(hashHistory, store)
+const routes = Routes(store)
+
+injectTapEventPlugin()
 
 /*
   routes
 */
 ReactDOM.render(  
-  getRoutes(store, history),
+  <Provider store={store}>
+    <MuiThemeProvider>
+      <Router history={history}>
+        {routes}
+      </Router>
+    </MuiThemeProvider>
+  </Provider>,
   document.getElementById('mount')
 )

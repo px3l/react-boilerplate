@@ -1,25 +1,20 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Layout from '../components/Layout'
 
 export class App extends Component {
   render() {
 
     return (
-      <Layout urls={this.props.urls}>
+      <div>
         {this.props.children}
-      </Layout>
+      </div>
     )
     
   }
 }
 
 function mapStateToProps(state) {
-
-  return {
-    urls:state.urls
-  }
-
+  return {}
 }
 
 export default connect(

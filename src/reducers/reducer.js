@@ -1,4 +1,6 @@
-import { HELLO } from '../actions/hello'
+import update from 'react/lib/update'
+
+import { HELLO } from '../actions/actions'
 
 const initialState = {
   helloClicked: false
