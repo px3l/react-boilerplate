@@ -9,6 +9,15 @@ var nodeEnvPlugin = new webpack.DefinePlugin({
   'process.env.NODE_ENV': RELEASE ? '"production"' : '"development"'
 })
 
+// fix ERROR in ./~/react-tap-event-plugin
+var reactDomLibPath = path.join(__dirname, "./node_modules/react-dom/lib");
+var alias = {};
+["EventPluginHub", "EventConstants", "EventPluginUtils", "EventPropagators",
+ "SyntheticUIEvent", "CSSPropertyOperations", "ViewportMetrics"].forEach(function(filename){
+    alias["react/lib/"+filename] = path.join(__dirname, "./node_modules/react-dom/lib", filename);
+});
+
+
 module.exports = {
   devtool: RELEASE ? [] : 'inline-source-map',
   entry: [
@@ -34,6 +43,9 @@ module.exports = {
     // development plugins
     nodeEnvPlugin
   ],
+
+  // fix ERROR in ./~/react-tap-event-plugin
+  resolve: {alias: alias},
 
   module: {
     loaders: [
