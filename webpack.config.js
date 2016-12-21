@@ -2,6 +2,8 @@
 
 var path = require('path')
 var webpack = require('webpack')
+const autoprefixer = require('autoprefixer')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var RELEASE = process.env.NODE_ENV == 'production' ? true : false;
 
@@ -32,7 +34,12 @@ module.exports = {
   plugins: RELEASE ? [
     // production plugins
     nodeEnvPlugin,
-
+    new ExtractTextPlugin('app.css', { allChunks: true }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    }),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       compress: {
@@ -41,11 +48,18 @@ module.exports = {
     })
   ] : [
     // development plugins
-    nodeEnvPlugin
+    nodeEnvPlugin,
+    new ExtractTextPlugin('app.css', { allChunks: true }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    })
   ],
 
-  // fix ERROR in ./~/react-tap-event-plugin
-  resolve: {alias: alias},
+  resolve: {
+    alias: alias // fix ERROR in ./~/react-tap-event-plugin
+  },
 
   module: {
     loaders: [
@@ -56,8 +70,15 @@ module.exports = {
         query: {
           presets: ['es2015', 'react', 'stage-1']
         }
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        loader: 'babel'
+      }, {
+        test: /\.(scss|css)$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap')
       }
-
     ]
   }
 };

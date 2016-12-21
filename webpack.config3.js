@@ -32,12 +32,7 @@ module.exports = {
   plugins: RELEASE ? [
     // production plugins
     nodeEnvPlugin,
-    new ExtractTextPlugin('app.css', { allChunks: true }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    }),
+
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       compress: {
@@ -46,23 +41,11 @@ module.exports = {
     })
   ] : [
     // development plugins
-    nodeEnvPlugin,
-    new ExtractTextPlugin('app.css', { allChunks: true }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    })
+    nodeEnvPlugin
   ],
 
-  resolve: {
-    alias: alias // fix ERROR in ./~/react-tap-event-plugin
-    extensions: ['', '.scss', '.js', '.json', '.md'], //
-    packageMains: ['browser', 'web', 'browserify', 'main', 'style'], //
-    modulesDirectories: [ //
-      'node_modules'
-    ]
-  },
+  // fix ERROR in ./~/react-tap-event-plugin
+  resolve: {alias: alias},
 
   module: {
     loaders: [
@@ -73,15 +56,8 @@ module.exports = {
         query: {
           presets: ['es2015', 'react', 'stage-1']
         }
-      },
-      {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        loader: 'babel'
-      }, {
-        test: /\.(scss|css)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap')
       }
+
     ]
   }
 };
