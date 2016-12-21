@@ -9,15 +9,6 @@ var nodeEnvPlugin = new webpack.DefinePlugin({
   'process.env.NODE_ENV': RELEASE ? '"production"' : '"development"'
 })
 
-// fix ERROR in ./~/react-tap-event-plugin
-var reactDomLibPath = path.join(__dirname, "./node_modules/react-dom/lib");
-var alias = {};
-["EventPluginHub", "EventConstants", "EventPluginUtils", "EventPropagators",
- "SyntheticUIEvent", "CSSPropertyOperations", "ViewportMetrics"].forEach(function(filename){
-    alias["react/lib/"+filename] = path.join(__dirname, "./node_modules/react-dom/lib", filename);
-});
-
-
 module.exports = {
   devtool: RELEASE ? [] : 'inline-source-map',
   entry: [
@@ -29,6 +20,50 @@ module.exports = {
     filename: 'app.js'
   },
 
+  resolve: {
+    extensions: ['', '.scss', '.js', '.json', '.md'],
+    packageMains: ['browser', 'web', 'browserify', 'main', 'style'],
+    modulesDirectories: [
+      'node_modules'
+    ]
+  },
+
+  /*
+  module: {
+    loaders: [
+      {
+        test: /.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'react', 'stage-1']
+        }
+      },
+      {
+        test: /(\.css|\.scss)$/,
+        loader: 'style!css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass?sourceMap'
+      }
+    ]
+  }*/
+
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        loader: 'babel'
+      }, {
+        test: /\.(scss|css)$/,
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass?sourceMap')
+      }
+    ]
+  },
+
+  postcss: [autoprefixer],
+  sassLoader: {
+    data: '@import "' + path.resolve(__dirname, 'src/theme/_theme.scss') + '";'
+  },
+  
   plugins: RELEASE ? [
     // production plugins
     nodeEnvPlugin,
@@ -42,22 +77,11 @@ module.exports = {
   ] : [
     // development plugins
     nodeEnvPlugin
-  ],
-
-  // fix ERROR in ./~/react-tap-event-plugin
-  resolve: {alias: alias},
-
-  module: {
-    loaders: [
-      {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'react', 'stage-1']
-        }
-      }
-
-    ]
-  }
+    new ExtractTextPlugin('app.css', { allChunks: true }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('development')
+    })
+  ]
 };

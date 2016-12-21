@@ -1,12 +1,12 @@
 import React, { Component, PropTypes } from 'react'
-import Graph from 'graph'
+import Table from '../containers/Table'
 
 class HomeComponent extends Component {
   render() {
     return (
       <div className="home">
         i am home
-        <Graph />
+        <Table />
       </div>
     )
   }
