@@ -1,12 +1,13 @@
 import React, { Component, PropTypes } from 'react'
-import Table from '../containers/Table'
+import MUIapp from '../containers/MUIapp'
 
 class HomeComponent extends Component {
   render() {
     return (
       <div className="home">
-        i am home
-        <Table />
+      	This is the homepage. Below is an example of a material-ui app.
+      	<br />
+        <a href="/#/material-ui">Material-UI Table</a>
       </div>
     )
   }
