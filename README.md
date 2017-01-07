@@ -28,3 +28,9 @@ To clean for rebuild use
 ```bash
 $ yarn run clean
 ```
+
+To completely remove dirs for rebuild use
+
+```bash
+$ yarn run delete
+```
