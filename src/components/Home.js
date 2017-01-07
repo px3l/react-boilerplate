@@ -5,7 +5,7 @@ class HomeComponent extends Component {
   render() {
     return (
       <div className="home">
-      	This is the homepage. Below is an example of a material-ui app.
+      	This is the homepage. Below is an example of Material-UI.
       	<br />
         <a href="/#/material-ui">Material-UI Table</a>
       </div>
