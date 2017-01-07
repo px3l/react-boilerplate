@@ -2,7 +2,7 @@
 
 A basic boilerplate for React apps. This is just a frontend app using a react-redux setup.
 
-#### Development
+## Development
 
 To build the frontend (outputs to `frontend/dist`):
 
@@ -19,4 +19,12 @@ To serve the frontend you can use
 ```bash
 $ cd dist
 $ ecstatic
+```
+
+#### Clean
+
+To clean for rebuild use
+
+```bash
+$ yarn run clean
 ```

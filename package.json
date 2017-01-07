@@ -1,13 +1,12 @@
 {
   "name": "react-boilerplate",
+  "private": true,
   "version": "1.0.0",
-  "description": "This is an application that intelligently displays your contacts in a way to encourage and maintain healthy social connections.",
+  "description": "Boilerplate for React-redux apps",
   "main": "index.js",
   "scripts": {
-    "clean": "mkdir -p dist && rm -rf dist/*",
-    "assets": "cp www/* dist",
+    "clean": "rm -rf dist && rm -rf node_modules",
     "watch": "WEBPACK_ARGS=--watch npm run webpack",
-    "prewebpack": "npm run clean && npm run assets",
     "webpack": "webpack $WEBPACK_ARGS",
     "build": "NODE_ENV=development npm run webpack",
     "release": "NODE_ENV=production npm run webpack",
@@ -50,16 +49,5 @@
     "sass-loader": "^4.0.0",
     "tape": "^4.6.2",
     "webpack": "^1.13.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/px3l/intellicontacts.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/px3l/intellicontacts/issues"
-  },
-  "homepage": "https://github.com/px3l/intellicontacts#readme"
+  }
 }
