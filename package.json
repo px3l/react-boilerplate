@@ -5,8 +5,10 @@
   "description": "Boilerplate for React-redux apps",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf dist && rm -rf node_modules",
+    "assets": "cp www/* dist",
+    "clean": "mkdir -p dist && rm -rf dist/*",
     "watch": "WEBPACK_ARGS=--watch npm run webpack",
+    "prewebpack": "npm run clean && npm run assets",
     "webpack": "webpack $WEBPACK_ARGS",
     "build": "NODE_ENV=development npm run webpack",
     "release": "NODE_ENV=production npm run webpack",
