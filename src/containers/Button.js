@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import ButtonComponent from '../components/Button'
 
-import { BUTTON_COUNT } from '../actions/actions'
+import * as actions from '../actions/actions'
 
 class Button extends Component {
   render() {
@@ -17,11 +17,14 @@ class Button extends Component {
 
 function mapStateToProps(state) {
   return {
+    number: state.number
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    incrementButtonCount: (number) => {
+      dispatch(actions.buttonCount())
   }
 }
 

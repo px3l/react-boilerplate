@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 
 const style = {
@@ -7,7 +7,7 @@ const style = {
 
 const ButtonComponent = () => (
   <div>
-    <RaisedButton label="Primary" primary={true} style={style} />
+    <RaisedButton label={this.props.number} primary={true} style={style} />
   </div>
 )
 

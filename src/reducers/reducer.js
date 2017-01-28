@@ -1,16 +1,16 @@
 import update from 'react/lib/update'
 
-import { HELLO } from '../actions/actions'
+import { BUTTON_COUNT } from '../actions/actions'
 
 const initialState = {
-  helloClicked: false
+  number: 0
 }
 
-export default function clicker(state = initialState, action = {}) {
+export default function counter(state = initialState, action = {}) {
   switch (action.type) {
-    case HELLO:
+    case BUTTON_COUNT:
       return Object.assign({}, state, {
-        helloClicked: true
+        number: number++
       })
     default:
       return state
