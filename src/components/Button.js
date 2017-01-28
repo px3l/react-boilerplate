@@ -7,7 +7,7 @@ const style = {
 
 const ButtonComponent = () => (
   <div>
-    <RaisedButton label={this.props.number} primary={true} style={style} />
+    <RaisedButton label="CHANGE" primary={true} style={style} />
   </div>
 )
 

@@ -23,8 +23,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    incrementButtonCount: (number) => {
-      dispatch(actions.buttonCount())
   }
 }
 
