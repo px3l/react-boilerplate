@@ -1,13 +1,16 @@
 import React, { Component, PropTypes } from 'react'
+
 import MUIapp from '../containers/MUIapp'
+import Button from '../containers/Button'
 
 class HomeComponent extends Component {
   render() {
     return (
       <div className="home">
-      	This is the homepage. Below is an example of Material-UI.
-      	<br />
-        <a href="/#/material-ui">Material-UI Table</a>
+        <MUIapp />
+        <br />
+        And here is a button that counts using an action and reducer
+        <Button />
       </div>
     )
   }

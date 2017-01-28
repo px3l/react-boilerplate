@@ -1,9 +1,9 @@
-export const HELLO = 'HELLO'
+export const BUTTON_COUNT = 'BUTTON_COUNT'
 
-export function hello() {
+export function buttonCount() {
 
   return {
-  	type: HELLO
+  	type: BUTTON_COUNT
   }
 
 }
