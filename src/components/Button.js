@@ -7,8 +7,14 @@ const style = {
 
 const ButtonComponent = () => (
   <div>
-    <RaisedButton label="CHANGE" primary={true} style={style} />
+    <RaisedButton 
+    	label="cunt"
+    	primary={true} 
+    	style={style} />
   </div>
 )
+
+ButtonComponent.propTypes = {
+}
 
 export default ButtonComponent;

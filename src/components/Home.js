@@ -7,9 +7,10 @@ class HomeComponent extends Component {
   render() {
     return (
       <div className="home">
+        Here is a Material UI component example
         <MUIapp />
         <br />
-        And here is a button that counts using an action and reducer
+        And here is a button that increments using an action and reducer
         <Button />
       </div>
     )

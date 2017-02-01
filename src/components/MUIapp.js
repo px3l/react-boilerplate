@@ -6,7 +6,6 @@ const MUIAppBar = () => (
   <div>
 	  <AppBar
 	    title="Material UI App"
-	    iconClassNameRight="muidocs-icon-navigation-expand-more"
 	  />
 	  <MUItable />
 	</div>

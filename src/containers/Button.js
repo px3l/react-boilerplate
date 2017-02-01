@@ -17,7 +17,7 @@ class Button extends Component {
 
 function mapStateToProps(state) {
   return {
-    number: state.number
+    number: state.reducer.number
   }
 }
 
