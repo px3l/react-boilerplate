@@ -21,8 +21,11 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
   return {
+    counter: () => {
+      dispatch(actions.buttonCount())
+    }
   }
 }
 
