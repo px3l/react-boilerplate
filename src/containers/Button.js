@@ -8,9 +8,11 @@ import * as actions from '../actions/actions'
 class Button extends Component {
   render() {
     var props = this.props
+
     console.log("-------------------------------")
     console.log("BUTTON CONTAINER PROPS")
     console.dir(props)
+    
     return (
       <ButtonComponent {...props} />
     )
