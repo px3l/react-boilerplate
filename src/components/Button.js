@@ -9,7 +9,7 @@ class ButtonComponent extends Component {
 	render() {
 		let state = this.props.count
 		console.log("-------------------------------")
-    console.log("BUTTON COMPONENT")
+    console.log("BUTTON COMPONENT PROPS")
 		console.dir(state)
 		return(
 				<div>

@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 import { applyMiddleware, compose, createStore, combineReducers } from 'redux'
 import { Router, hashHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer, routerMiddleware } from 'react-router-redux'
-import thunk from 'redux-thunk'
 
 import Routes from './routes'
 
@@ -13,7 +12,6 @@ import Reducer from './reducers/reducer'
 
 const finalCreateStore = compose(
   applyMiddleware(
-    thunk,
     routerMiddleware(hashHistory)
   ),
   window.devToolsExtension ? window.devToolsExtension() : f => f
@@ -30,9 +28,8 @@ const routes = Routes(store)
 
 injectTapEventPlugin()
 
-/*
-  routes
-*/
+// ROUTES
+
 ReactDOM.render(  
   <Provider store={store}>
     <div>
