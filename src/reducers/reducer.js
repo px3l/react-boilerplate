@@ -1,17 +1,18 @@
 import update from 'react/lib/update'
-
-import { BUTTON_COUNT } from '../actions/actions'
+import * as actions from '../actions/actions'
 
 const initialState = {
-  number: 0
+  count: 0
 }
 
-export default function counter(state = initialState, action = {}) {
+export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case BUTTON_COUNT:
-      return Object.assign({}, state, {
-        number: number++
+
+    case actions.BUTTON_COUNT:
+      return update(state, {
+        count: count++
       })
+
     default:
       return state
   }

@@ -1,18 +1,27 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import RaisedButton from 'material-ui/RaisedButton'
 
 const style = {
   margin: 12,
 }
 
-const ButtonComponent = () => (
-  <div>
-    <RaisedButton 
-    	label="cunt"
-    	primary={true} 
-    	style={style} />
-  </div>
-)
+class ButtonComponent extends Component {
+	render() {
+		let state = this.props.count
+		console.log("-------------------------------")
+    console.log("BUTTON COMPONENT")
+		console.dir(state)
+		return(
+				<div>
+			    <RaisedButton 
+			    	label={state.toString()}
+			    	primary={true}
+			    	onTouchTap={this.props.buttonCount}
+			    	style={style} />
+			  </div>
+			)
+	}
+}
 
 ButtonComponent.propTypes = {
 }

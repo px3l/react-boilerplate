@@ -8,7 +8,9 @@ import * as actions from '../actions/actions'
 class Button extends Component {
   render() {
     var props = this.props
-
+    console.log("-------------------------------")
+    console.log("BUTTON CONTAINER")
+    console.dir(props)
     return (
       <ButtonComponent {...props} />
     )
@@ -17,7 +19,7 @@ class Button extends Component {
 
 function mapStateToProps(state) {
   return {
-    number: state.reducer.number
+    count: state.reducer.count
   }
 }
 

@@ -10,8 +10,6 @@ To build the frontend (outputs to `frontend/dist`):
 $ yarn run watch
 ```
 
-You can use `npm run watch` if you do not have yarn installed
-
 #### Serve
 
 To serve the frontend you can use
@@ -23,14 +21,14 @@ $ ecstatic
 
 #### Clean
 
-To clean for rebuild use
+To clean `/dist` for rebuild use
 
 ```bash
 $ yarn run clean
 ```
 
-To completely remove dirs for rebuild use
+To completely reinstall (delete `/node_modules` and `/dist`)
 
 ```bash
-$ yarn run delete
+$ yarn run reinstall
 ```
