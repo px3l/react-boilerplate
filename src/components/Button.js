@@ -7,16 +7,16 @@ const style = {
 
 class ButtonComponent extends Component {
 	render() {
-		let state = this.props.count
+		let state = this.props
 		console.log("-------------------------------")
     console.log("BUTTON COMPONENT PROPS")
 		console.dir(state)
 		return(
 				<div>
 			    <RaisedButton 
-			    	label={state.toString()}
+			    	label={state.count.toString()}
 			    	primary={true}
-			    	onTouchTap={this.props.buttonCount}
+			    	onTouchTap={() => this.props.counter()}
 			    	style={style} />
 			  </div>
 			)

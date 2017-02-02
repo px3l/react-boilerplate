@@ -9,7 +9,7 @@ export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
 
     case actions.BUTTON_COUNT:
-      return update(state, {
+      return Object.assign({}, state, {
         count: count++
       })
 
