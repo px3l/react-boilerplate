@@ -9,8 +9,10 @@ export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
 
     case actions.BUTTON_COUNT:
+    	console.log("-------------------------------")
+			console.log("THE REDUCER IS RUN")
       return Object.assign({}, state, {
-        count: count++
+        count: 1
       })
 
     default:
