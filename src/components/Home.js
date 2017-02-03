@@ -6,12 +6,13 @@ import Button from '../containers/Button'
 class HomeComponent extends Component {
   render() {
     return (
-      <div className="home">
+      <div>
         <AppBar
-          title="React + Redux + Material UI Boiler Plate"
+          title="React + Redux + Material UI App"
         />
+        <br />
         Here is a button that increments using an action and reducer
-        <Button />
+        <Button style={{ display: 'inline-block', padding: '20px' }}/>
       </div>
     )
   }
